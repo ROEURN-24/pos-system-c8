@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply styles to the form-cat container */
+.form-cat {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+}
+
+/* Apply styles to the input fields within form-cat */
+.input {
+    margin-bottom: 10px;
+}
+
+.input input {
+    width: 200px;
+    padding: 8px;
+    margin-right: 10px;
+}
+
+/* Apply styles to the buttons within form-cat */
+.input button {
+    padding: 8px 12px;
+    cursor: pointer;
+    background-color: #2196F3;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+}
+
+/* Style for the table within form-cat */
+.top-sell-product {
+    margin-top: 20px;
+}
+
+.table-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#searchInput {
+    padding: 8px;
+}
+
+/* Style for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: red;
+    color: white;
+}
+
+/* Style for the add button in the table header */
+#btncat {
+    padding: 8px 12px;
+    cursor: pointer;
+    background-color: #2196F3;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+}
+
+/* Optional: Style for the search input */
+#searchInput {
+    padding: 8px;
+}

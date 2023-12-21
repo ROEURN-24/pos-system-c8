@@ -1,27 +1,4 @@
 
-document.addEventListener("DOMContentLoaded", function () {
-    const downloadPdfButton = document.getElementById('downloadPdf');
-
-    downloadPdfButton.addEventListener('click', function () {
-        const element = document.querySelector('.container'); // Assuming you want to convert the entire .container to PDF
-
-        const opt = {
-            margin: 1,
-            filename: 'your_document.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2 },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-        };
-
-        // Start PDF generation
-        html2pdf().set(opt).from(element).save();
-    });
-});
-
-
-
-
-
 function addCategory() {
 
     let catUniqueID = localStorage.getItem('catUniqueID');
@@ -55,7 +32,7 @@ function getCategory() {
         tdName.textContent = category.name;
 
         let deleteIcon = document.createElement('i');
-        let editIcon = document.createElement('i'); 
+        let editIcon = document.createElement('i');
         deleteIcon.textContent = "delete";
         editIcon.textContent = "edit";
         deleteIcon.className = "material-icons delete";
@@ -92,7 +69,8 @@ function editCategory(e) {
     let name = tr.firstElementChild.nextElementSibling.textContent;
     catName.value = name;
     cat_id.value = id;
-  
+
+    alert(`Category ID: ${id}, Name: ${name}`);
 
 }
 
@@ -101,20 +79,59 @@ function updateCategory() {
     categories[index].name = catName.value;
 
     localStorage.setItem('categories', JSON.stringify(categories));
-    
+
     window.location.reload();
 }
 
 function searchCategory() {
-    // Todo
+    let searchInput = document.querySelector('#searchInput').value.toLowerCase();
+
+    // Clear the existing table rows
+    tbody.innerHTML = '';
+
+    for (let category of categories) {
+        // Convert category name to lowercase for case-insensitive comparison
+        let categoryName = category.name.toLowerCase();
+
+        // Check if the search input matches the category name
+        if (categoryName.includes(searchInput)) {
+            let tr = document.createElement('tr');
+            let tdId = document.createElement('td');
+            let tdName = document.createElement('td');
+            let tdAction = document.createElement('td');
+
+            tdId.textContent = category.catId;
+            tdName.textContent = category.name;
+
+            let deleteIcon = document.createElement('i');
+            let editIcon = document.createElement('i');
+            deleteIcon.textContent = "delete";
+            editIcon.textContent = "edit";
+            deleteIcon.className = "material-icons delete";
+            editIcon.className = "material-icons edit";
+
+            tdAction.appendChild(deleteIcon);
+            tdAction.appendChild(editIcon);
+
+            tr.appendChild(tdId);
+            tr.appendChild(tdName);
+            tr.appendChild(tdAction);
+
+            tbody.appendChild(tr);
+        }
+    }
 }
 
-const catName = document.querySelector('#cat_name');
-const cat_id = document.querySelector('#cat_id');
-const btncat = document.querySelector('#btncat');
-const catBtnAdd = document.querySelector('#btnAddCat');
-const catBtnUpdate = document.querySelector('#btnupdateCat');
-const tbody = document.querySelector('tbody');
+// Assuming you have an input field for searching with id 'searchInput'
+searchInput.addEventListener('input', searchCategory);
+
+
+let catName = document.querySelector('#cat_name');
+let cat_id = document.querySelector('#cat_id');
+let btncat = document.querySelector('#btncat');
+let catBtnAdd = document.querySelector('#btnAddCat');
+let catBtnUpdate = document.querySelector('#btnupdateCat');
+let tbody = document.querySelector('tbody');
 let categories = [];
 
 if (localStorage.getItem('categories') !== null) {

@@ -24,6 +24,30 @@ function addProduct() {
     window.location.reload();
 }
 
+
+
+
+function deleteProduct(e) {
+    let tr = e.target.closest('tr');
+    let id = tr.firstElementChild.textContent;
+
+    // Find the index of the product in the products array based on its proId
+    let index = products.findIndex(pro => pro.proId === parseInt(id));
+
+    let isRemove = window.confirm('Are you sure you want to delete this product?');
+
+    if (index !== -1 && isRemove) {
+        tr.remove();  // Remove the row from the table
+
+        // Remove the product from the products array
+        products.splice(index, 1);
+
+        // Update the products array in local storage
+        localStorage.setItem('products', JSON.stringify(products));
+    }
+}
+
+
 function getProduct() {
     for (let product of products) {
         let tr = document.createElement('tr');
@@ -99,7 +123,7 @@ function updateProduct() {
     products[index].price = unitPrice.value;
     products[index].grossPrice = grossPrice.value;
 
-    localStorage.setItem('products', JSON.stringify(products)); //
+    localStorage.setItem('products', JSON.stringify(products)); 
     window.location.reload();
 }
 

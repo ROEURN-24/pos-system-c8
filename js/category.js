@@ -1,153 +1,101 @@
+document.addEventListener('DOMContentLoaded', function () {
+    // DOM Elements
+    const catName = document.querySelector('#cat_name');
+    const cat_id = document.querySelector('#cat_id');
+    const btncat = document.querySelector('#btncat');
+    const catBtnAdd = document.querySelector('#btnAddCat');
+    const catBtnUpdate = document.querySelector('#btnupdateCat');
+    const tbody = document.querySelector('tbody');
+    const searchInput = document.querySelector('#searchInput');
+    const deleteIcons = document.querySelectorAll('.delete');
+    const editIcons = document.querySelectorAll('.edit');
 
-function addCategory() {
+    // Categories Array
+    let categories = [];
 
-    let catUniqueID = localStorage.getItem('catUniqueID');
-    if (catUniqueID === null || categories.length === 0) {
-        catUniqueID = 1;
-    } else {
+    // Check if categories exist in localStorage and populate categories array
+    if (localStorage.getItem('categories')) {
+        categories = JSON.parse(localStorage.getItem('categories'));
+    }
+
+    // Event Listeners
+    catBtnAdd.addEventListener('click', addCategory);
+    catBtnUpdate.addEventListener('click', updateCategory);
+    searchInput.addEventListener('input', searchCategory);
+    deleteIcons.forEach(icon => icon.addEventListener('click', deleteCategory));
+    editIcons.forEach(icon => icon.addEventListener('click', editCategory));
+
+    // Functions
+    function addCategory() {
+        let catUniqueID = localStorage.getItem('catUniqueID') || 0;
         catUniqueID = parseInt(catUniqueID) + 1;
-    }
-    localStorage.setItem('catUniqueID', JSON.stringify(catUniqueID));
-    let category = {
-        catId: catUniqueID,
-        name: catName.value
-    }
+        localStorage.setItem('catUniqueID', JSON.stringify(catUniqueID));
 
-    categories.push(category);
-    console.log(categories);
+        const category = {
+            catId: catUniqueID,
+            name: catName.value
+        };
 
-    localStorage.setItem('categories', JSON.stringify(categories));
+        categories.push(category);
+        localStorage.setItem('categories', JSON.stringify(categories));
 
-    window.location.reload();
-}
-
-
-function getCategory() {
-    for (let category of categories) {
-        let tr = document.createElement('tr');
-        let tdId = document.createElement('td');
-        let tdName = document.createElement('td');
-        let tdAction = document.createElement('td');
-        tdId.textContent = category.catId;
-        tdName.textContent = category.name;
-
-        let deleteIcon = document.createElement('i');
-        let editIcon = document.createElement('i');
-        deleteIcon.textContent = "delete";
-        editIcon.textContent = "edit";
-        deleteIcon.className = "material-icons delete";
-        editIcon.className = "material-icons edit";
-
-        tdAction.appendChild(deleteIcon);
-        tdAction.appendChild(editIcon)
-
-        tr.appendChild(tdId);
-        tr.appendChild(tdName);
-        tr.appendChild(tdAction);
-
-        tbody.appendChild(tr)
-    }
-}
-
-function deleteCategory(e) {
-    let tr = e.target.closest('tr');
-    let id = e.target.closest('tr').firstElementChild.textContent;
-    let index = categories.findIndex(cat => cat.catId === parseInt(id));
-    let isRemove = window.confirm('Are you sure you want to delete this category?');
-    if (index !== -1 && isRemove) {
-        tr.remove();
-        categories.splice(index, 1);
+        window.location.reload();
     }
 
-    localStorage.setItem('categories', JSON.stringify(categories));
-}
-
-function editCategory(e) {
-    // TODO:
-    let tr = e.target.closest('tr');
-    let id = e.target.closest('tr').firstElementChild.textContent;
-    let name = tr.firstElementChild.nextElementSibling.textContent;
-    catName.value = name;
-    cat_id.value = id;
-
-    alert(`Category ID: ${id}, Name: ${name}`);
-
-}
-
-function updateCategory() {
-    let index = categories.findIndex(cat => cat.catId === parseInt(cat_id.value));
-    categories[index].name = catName.value;
-
-    localStorage.setItem('categories', JSON.stringify(categories));
-
-    window.location.reload();
-}
-
-function searchCategory() {
-    let searchInput = document.querySelector('#searchInput').value.toLowerCase();
-
-    // Clear the existing table rows
-    tbody.innerHTML = '';
-
-    for (let category of categories) {
-        // Convert category name to lowercase for case-insensitive comparison
-        let categoryName = category.name.toLowerCase();
-
-        // Check if the search input matches the category name
-        if (categoryName.includes(searchInput)) {
-            let tr = document.createElement('tr');
-            let tdId = document.createElement('td');
-            let tdName = document.createElement('td');
-            let tdAction = document.createElement('td');
-
-            tdId.textContent = category.catId;
-            tdName.textContent = category.name;
-
-            let deleteIcon = document.createElement('i');
-            let editIcon = document.createElement('i');
-            deleteIcon.textContent = "delete";
-            editIcon.textContent = "edit";
-            deleteIcon.className = "material-icons delete";
-            editIcon.className = "material-icons edit";
-
-            tdAction.appendChild(deleteIcon);
-            tdAction.appendChild(editIcon);
-
-            tr.appendChild(tdId);
-            tr.appendChild(tdName);
-            tr.appendChild(tdAction);
-
+    function getCategory() {
+        tbody.innerHTML = '';
+        for (const category of categories) {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${category.catId}</td>
+                <td>${category.name}</td>
+                <td>
+                    <i class="material-icons delete">delete</i>
+                    <i class="material-icons edit">edit</i>
+                </td>
+            `;
             tbody.appendChild(tr);
         }
     }
-}
 
-// Assuming you have an input field for searching with id 'searchInput'
-searchInput.addEventListener('input', searchCategory);
+    function deleteCategory(e) {
+        const tr = e.target.closest('tr');
+        const id = tr.querySelector('td:first-child').textContent;
+        const index = categories.findIndex(cat => cat.catId === parseInt(id));
 
+        if (index !== -1 && window.confirm('Are you sure you want to delete this category?')) {
+            tr.remove();
+            categories.splice(index, 1);
+            localStorage.setItem('categories', JSON.stringify(categories));
+        }
+    }
 
-let catName = document.querySelector('#cat_name');
-let cat_id = document.querySelector('#cat_id');
-let btncat = document.querySelector('#btncat');
-let catBtnAdd = document.querySelector('#btnAddCat');
-let catBtnUpdate = document.querySelector('#btnupdateCat');
-let tbody = document.querySelector('tbody');
-let categories = [];
+    function editCategory(e) {
+        const tr = e.target.closest('tr');
+        const id = tr.querySelector('td:first-child').textContent;
+        const name = tr.querySelector('td:nth-child(2)').textContent;
 
-if (localStorage.getItem('categories') !== null) {
-    categories = JSON.parse(localStorage.getItem('categories'));
-}
-catBtnAdd.addEventListener('click', addCategory);
-catBtnUpdate.addEventListener('click', updateCategory);
-getCategory();
+        catName.value = name;
+        cat_id.value = id;
+        alert(`Category ID: ${id}, Name: ${name}`);
+    }
 
-let deleteIcons = document.querySelectorAll('.delete');
-let editIcons = document.querySelectorAll('.edit');
+    function updateCategory() {
+        const index = categories.findIndex(cat => cat.catId === parseInt(cat_id.value));
+        if (index !== -1) {
+            categories[index].name = catName.value;
+            localStorage.setItem('categories', JSON.stringify(categories));
+            window.location.reload();
+        }
+    }
 
-for (let deleteIcon of deleteIcons) {
-    deleteIcon.addEventListener('click', deleteCategory);
-}
+    function searchCategory() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filteredCategories = categories.filter(category => category.name.toLowerCase().includes(searchTerm));
+        categories = filteredCategories;
+        getCategory();
+    }
 
-for (let editIcon of editIcons) {
-    editIcon.addEventListener('click', editCategory);
-}
+    // Initial Function Call
+    getCategory();
+});

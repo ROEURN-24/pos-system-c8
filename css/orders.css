@@ -1,0 +1,56 @@
+/* Apply styles to the content container */
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Apply styles to the get-product container */
+.get-product {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Apply styles to the search-product container */
+.search-product {
+    margin-bottom: 20px;
+}
+
+/* Apply styles to the search input */
+#searhc-product {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Apply styles to the result-pro list */
+#result-pro {
+    list-style: none;
+    padding: 0;
+}
+
+/* Apply styles to each item in the result-pro list */
+#result-pro li {
+    margin-bottom: 5px;
+}
+
+/* Apply styles to the Add To Cart button */
+button {
+    padding: 10px;
+    background-color: #2196F3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the Add To Cart button */
+button:hover {
+    background-color: #45a049;
+}

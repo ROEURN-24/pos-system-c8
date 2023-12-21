@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POS</title>
+    <title>POS SYSTEM</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/products.css">
     <script src="js/product.js" defer></script>
 </head>
@@ -23,11 +24,12 @@
                 <li class="active"><a href="product.html"><i
                             class="material-icons">shopping_cart</i><span>Products</span></a></li>
                 <li><a href="category.html"><i class="material-icons">apps</i><span>Categories</span></a></li>
-                <li><a href="checkout.html"><i class="material-icons">shopping_cart_checkout</i><span>Order</span></a></li>
-                
+                <li><a href="checkout.html"><i class="material-icons">shopping_cart_checkout</i><span>Order</span></a>
+                </li>
+
             </ul>
         </div>
-        
+
         <div class="content">
             <div class="form-container">
 
@@ -42,26 +44,26 @@
                         <input type="number" placeholder="Gross Price" id="gross_price">
                     </div>
                     <div class="input">
-                        <select  id="category">
+                        <select id="category">
                             <option selected disabled>Select Category</option>
                         </select>
                     </div>
                     <div class="input">
                         <button class="productAdd">Add Product</button>
                         <button class="productUpdate">Update Product</button>
-                        
+
                     </div>
                 </div>
             </div>
-            
+
             <div class="top-sell-product">
                 <div class="table-head">
                     <button><i class="material-icons">add</i><span>Product</span></button>
                     <div class="category-filter">
                         <label for="categoryFilter">Filter by Category:</label>
                         <select id="categoryFilter">
-                            <option  disabled selected>All Categories</option>
-                           
+                            <option disabled selected>All Categories</option>
+
                             <!-- Add more categories as needed -->
                         </select>
                     </div>
@@ -81,7 +83,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+
                     </tbody>
                 </table>
 

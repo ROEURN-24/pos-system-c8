@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/order.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo"><i class="material-icons">shopping_cart</i></div>
+        <span>POS System</span>
+    </header>
+    <div class="container">
+        <div class="navbar-left">
+            <ul>
+                <li><a href="index.html"><i class="material-icons">dashboard</i><span>Dashboard</span></a></li>
+                <li><a href="product.html"><i class="material-icons">shopping_cart</i><span>Products</span></a></li>
+                <li><a href="category.html"><i class="material-icons">apps</i><span>Categories</span></a></li>
+                <li class="active"><a href="checkout.html"><i class="material-icons">shopping_cart_checkout</i><span>Order</span></a></li>
+            </ul>
+        </div>
+        <div class="content">
+        <div class="get-product">
+            <div class="search-product">
+                <input type="number" id="searhc-product" placeholder="Search Product"> <br>
+                <!-- <span>Message</span> -->
+            </div>
+            <ul id="result-pro"></ul>
+            <button>Add To Cart</button>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

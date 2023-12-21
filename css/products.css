@@ -1,0 +1,277 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Set header to fixed */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    /* This ensures the header appears above other content */
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+.content {
+    width: 100%;
+}
+
+/* Additional CSS for centering .form-cat */
+.form-container {
+    width: 75%;
+    margin: 60px auto;
+    /* This centers the form-container horizontally */
+}
+
+.form-cat {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    /* You can adjust this width as needed */
+    margin: 0 auto;
+    /* This centers the form-cat horizontally */
+}
+
+
+
+/* Position navbar-left fixed on the left side */
+.navbar-left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    /* Cover the full height of the viewport */
+    width: 200px;
+    /* Set a fixed width for the navbar */
+    background-color: #333;
+    padding-top: 20px;
+    /* Adjust padding as needed */
+}
+
+/* Style for navbar-left menu items */
+.navbar-left ul {
+    list-style-type: none;
+}
+
+.navbar-left li {
+    margin-bottom: 10px;
+}
+
+.navbar-left a {
+    display: block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    text-align: center;
+    /* Center align text */
+}
+
+.navbar-left a:hover {
+    background-color: #555;
+}
+
+.active {
+    background-color: #555;
+}
+
+
+
+
+.input {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+
+.input input {
+    width: 90%;
+    text-align: center;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px 0px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button.productAdd,
+button.productUpdate {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.productAdd:hover,
+button.productUpdate:hover {
+    background-color: #0056b3;
+}
+
+/* Header styling */
+header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+.logo {
+    margin-right: 10px;
+}
+
+/* Navbar styling */
+.navbar-left {
+    width: 200px;
+    background-color: #333;
+    height: 100vh;
+    padding-top: 40px;
+}
+    
+.navbar-left ul {
+    list-style-type: none;
+}
+
+.navbar-left li {
+    margin-bottom: 10px;
+}
+
+.form-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80%;
+    display: none;
+    z-index: 400000;
+    /* Hidden by default */
+    /* Other styles as needed */
+}
+
+.top-sell-product {
+    position: relative;
+}
+
+
+.navbar-left a {
+    display: block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.navbar-left a:hover {
+    background-color: rgb(11, 108, 147);
+}
+
+.active {
+    background-color: red;
+}
+
+
+
+.top-sell-product {
+
+    
+    /* Width set to 80% of the container's width */
+    padding: 20px;
+    /* Optional: Add some padding for spacing */
+    box-sizing: border-box;
+    /* Ensures padding is included in the width */
+    background: #ffe8e8;
+}
+
+
+.top-sell-product {
+    position: absolute;
+    /* This allows us to position the element relative to its nearest positioned ancestor */
+    top: 0;
+    /* Aligns the top edge with the top edge of its nearest positioned ancestor */
+    right: 0;
+    /* Aligns the right edge with the right edge of its nearest positioned ancestor */
+    width: 84.4%;
+    /* Width set to 80% of the container's width */
+    margin-top: 40px;
+}
+
+
+.table-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.table-head input { 
+    display: flex;
+    width: 300px;
+    margin-top: 10px;
+    text-align: center;
+    align-items: center;
+}
+.table-head input:hover::placeholder {
+    color: #007bff;
+}
+.table-head button {
+    width: 110px;
+
+    border-radius: 5px;
+}
+.category-filter {
+    margin-bottom: 10px;
+    width: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.category-filter select {
+    width: 200px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    display: flex;
+    background: #ffffff;
+    margin: 5px 0px ;
+    padding-right: 16px;
+    height: 45px;
+
+}
+
+
+
+
+
+
+
+
+
+
+/* Adjust as needed based on your specific requirements */

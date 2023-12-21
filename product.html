@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="./css/products.css">
+    <script src="js/product.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo"><i class="material-icons">shopping_cart</i></div>
+        <span>POS System</span>
+    </header>
+    <div class="container">
+        <div class="navbar-left">
+            <ul>
+                <li><a href="index.html"><i class="material-icons">dashboard</i><span>Dashboard</span></a></li>
+                <li class="active"><a href="product.html"><i
+                            class="material-icons">shopping_cart</i><span>Products</span></a></li>
+                <li><a href="category.html"><i class="material-icons">apps</i><span>Categories</span></a></li>
+                <li><a href="checkout.html"><i class="material-icons">shopping_cart_checkout</i><span>Order</span></a></li>
+                
+            </ul>
+        </div>
+        
+        <div class="content">
+            <div class="form-container">
+
+                <div class="form-cat">
+                    <input type="hidden" id="pro_id">
+                    <div class="input">
+                        <input type="text" placeholder="Product name" id="product_name">
+                        <input type="number" placeholder="Quantity" id="qty">
+                    </div>
+                    <div class="input">
+                        <input type="number" placeholder="Unit Price" id="unit_price">
+                        <input type="number" placeholder="Gross Price" id="gross_price">
+                    </div>
+                    <div class="input">
+                        <select  id="category">
+                            <option selected disabled>Select Category</option>
+                        </select>
+                    </div>
+                    <div class="input">
+                        <button class="productAdd">Add Product</button>
+                        <button class="productUpdate">Update Product</button>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="top-sell-product">
+                <div class="table-head">
+                    <button><i class="material-icons">add</i><span>Product</span></button>
+                    <div class="category-filter">
+                        <label for="categoryFilter">Filter by Category:</label>
+                        <select id="categoryFilter">
+                            <option  disabled selected>All Categories</option>
+                           
+                            <!-- Add more categories as needed -->
+                        </select>
+                    </div>
+
+                    <input type="text" placeholder="Search product by name">
+
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

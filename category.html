@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/category.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo"><i class="material-icons">shopping_cart</i></div>
+        <span>POS System</span>
+    </header>
+    <div class="container">
+        <div class="navbar-left">
+            <ul>
+                <li><a href="index.html"><i class="material-icons">dashboard</i><span>Dashboard</span></a></li>
+                <li><a href="product.html"><i class="material-icons">shopping_cart</i><span>Products</span></a></li>
+                <li class="active"><a href="category.html"><i class="material-icons">apps</i><span>Categories</span></a></li>
+                <li><a href="checkout.html"><i class="material-icons">shopping_cart_checkout</i><span>Order</span></a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="form-cat">
+                <div class="input">
+                    <input type="text" placeholder="Category name" id="cat_name">
+                    <input type="hidden" id="cat_id">
+                </div>
+                
+                <div class="input">
+                    <button id="btnAddCat">Add Category</button>
+                    <button id="btnupdateCat">Update Category</button>
+                </div>
+            </div>
+            <div class="top-sell-product">
+                <div class="table-head">
+                    <button id="btncat"><i class="material-icons">add</i><span>Category</span></button>
+                    <input type="text" placeholder="Search category name">
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category ID</th>
+                            <th>Category Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+               
+            </div>
+        </div>
+    </div>
+</body>
+</html>
